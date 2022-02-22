@@ -1,4 +1,5 @@
 import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
 
 export class apiClient {
     constructor(url) {
@@ -23,13 +24,15 @@ export class apiClient {
             options['headers'] = { Authorization: `Bearer ${token}` };
         }
 
-        axios(options).then(res => {
-            const result = res.data;
-            if (result !== null) {
-                func(result);
-            }
-        }, (error) => {
-            console.log(error);
-        });
+        trackPromise(
+            axios(options).then(res => {
+                const result = res.data;
+                if (result !== null) {
+                    func(result);
+                }
+            }, (error) => {
+                console.log(error);
+            })
+        );
     }
 }
