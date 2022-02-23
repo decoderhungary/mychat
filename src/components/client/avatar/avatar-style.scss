@@ -1,0 +1,19 @@
+.ce-avatar {
+    /* box-shadow: var(--box-shadow-tight); */
+    display: inline-flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    letter-spacing: normal;
+    color: var(--color-inverse);
+}
+
+.ce-avatar.circle {
+    border-radius: 50% !important;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+}
