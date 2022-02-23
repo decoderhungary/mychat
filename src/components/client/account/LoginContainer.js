@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import { validateLoginForm } from "./validate";
 import { apiClient } from '../../../interactions/api-client/api-client';
+import MyStorage from '../../../utils/mystorage';
 
 const LoginContainer = () => {
     const [state, setState] = useState({
@@ -49,7 +50,7 @@ const LoginContainer = () => {
 
     const loginResponseHandler = (res) => {
         if (res) {
-            alert(`${res.username} ${res.color}`);
+            MyStorage.session.put('_mychat-usr', { id: res.id, username: res.username, token: res.token, color: res.color });
         }
     }
 
